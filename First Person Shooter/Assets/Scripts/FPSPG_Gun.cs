@@ -52,7 +52,7 @@ public class FPSPG_Gun : MonoBehaviour
     void GunShoot()
     {
         //Add a muzzle flash here
-
+        
         RaycastHit hit; //What is this variable?
         nextFire = Time.time + fireRate; //Why do this?
         if(Physics.Raycast(firePoint.transform.position, firePoint.transform.forward, out hit, gunRange)) //Sum up a Raycast here
