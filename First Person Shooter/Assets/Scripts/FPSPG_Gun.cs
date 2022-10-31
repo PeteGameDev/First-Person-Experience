@@ -18,6 +18,7 @@ public class FPSPG_Gun : MonoBehaviour
     public int magSize; //What's this do?
     public int currentAmmo; //What's this do?
     public int reserveAmmo; //What's this do?
+    public int impactForce;
     public GameObject firePoint; //What's this do?
     
     //For muzzle flash you'll need a particle system variable
@@ -62,6 +63,10 @@ public class FPSPG_Gun : MonoBehaviour
             if(target != null) //What does this mean?
             {
                 target.TakeDamage(gunDamage);
+            }
+            if(hit.rigidbody != null)
+            {
+                hit.rigidbody.AddForce(-hit.normal * impactForce);
             }
         }
     }
