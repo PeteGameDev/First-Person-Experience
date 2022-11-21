@@ -3,40 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-/*
-* TASK: Fix the 10 errors in this code
-    * Unity console will tell you where errors are and what they are, you just need to read it carefully
-    * Google is your friend!
-* TASK: Comment on each line of code to explain it
-* TASK: Create another enemy which acts differently to this one
-*/
-
 public class FPSPG_BasicEnemy : MonoBehaviour
 {
-    public Transform playerObject; //What's this for?
-    public float damageAmount; //Could all these floats be written neater? Maybe as a single line? 
+    public Transform playerObject; 
+    public float damageAmount; 
     public float attackDelay; 
     public float attackRate;
     public float attackDistance;
 
-    NavMeshAgent nav; //What's this?
+    NavMeshAgent nav; 
 
     void Start()
     {
-        playerObject = GameObject.FindWithTag("Player").transform; //What is this doing?
-        nav = GetComponent<NavMeshAgent>(); //Why do this?
+        playerObject = GameObject.FindWithTag("Player").transform; 
+        nav = GetComponent<NavMeshAgent>(); 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Time.time > attackDelay) //What is the condition here?
+        if(Time.time > attackDelay) 
         {
-            nav.destination = playerObject.position; //What's this for?
-            if(Vector3.Distance(playerObject.position, transform.position) <= attackDistance) //What's the condition here?
+            nav.destination = playerObject.position; 
+            if(Vector3.Distance(playerObject.position, transform.position) <= attackDistance)
             {
-                playerObject.GetComponent<FPSPG_PlayerHealth>().playerHealth -= damageAmount; //What is this?
-                attackDelay = Time.time + attackRate; //What's this for?
+                playerObject.GetComponent<FPSPG_PlayerHealth>().playerHealth -= damageAmount;
+                attackDelay = Time.time + attackRate; 
             }
         }
         else
