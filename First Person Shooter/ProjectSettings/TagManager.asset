@@ -8,6 +8,7 @@ TagManager:
   - Target
   - Health Item
   - Ammo Item
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX

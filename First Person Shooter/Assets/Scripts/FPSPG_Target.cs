@@ -2,28 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
-* For those of you who are struggling with programming
-* Replace the comments on this script with what the line does
-* You might need to use Google to find out
-* TIP: Don't overthink it
-*/ 
-
 public class FPSPG_Target : MonoBehaviour
 {
     public float health = 50f;
 
-    public void TakeDamage(float amount) //Why is this function public?
+    GameObject enemySpawnObject;
+
+    private void Start() {
+        enemySpawnObject = GameObject.Find("Spawner");
+    }
+    public void TakeDamage(float amount) 
     {
-        health -= amount; //What does this mean?
-        if(health <= 0f)//What is the condition here?
+        health -= amount; 
+        if(health <= 0f)
         {
             TargetDie();
         }
     }
 
-    void TargetDie()//what does this function do?
+    void TargetDie()
     {
-        Destroy(gameObject);//what object will this destroy?
+        Destroy(gameObject);
+        enemySpawnObject.GetComponent<EnemySpawn>().numberOfEnemies--;
+
     }
 }
